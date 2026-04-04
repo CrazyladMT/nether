@@ -269,7 +269,7 @@ local array_length = #schematic_GreaterStalactite.data + 1
 for i, node in ipairs(schematic_GreaterStalactite.data) do
     schematic_ToweringStalagmite.data[array_length - i] = node
 end
-y_size = schematic_GreaterStalactite.size.y
+local y_size = schematic_GreaterStalactite.size.y
 for i, node in ipairs(schematic_GreaterStalactite.yslice_prob) do
     schematic_ToweringStalagmite.yslice_prob[i] = {
         -- we can safely lower the prob. to gain more variance because floor based schematics
