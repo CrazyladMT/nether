@@ -757,7 +757,7 @@ end
 -- We want wormhole nodes to only emit mesecon energy orthogonally to the
 -- wormhole surface so that the wormhole will not send power to the frame,
 -- this allows the portal frame to listen for mesecon energy from external switches/wires etc.
-function get_mesecon_emission_rules_from_colorfacedir(param2)
+local function get_mesecon_emission_rules_from_colorfacedir(param2)
 
 	local axis_direction = 0
 	-- Strip off the top 6 bits to leave the 2 rotation bits, unfortunately MT lua has no bitwise '&'
@@ -786,7 +786,6 @@ function get_mesecon_emission_rules_from_colorfacedir(param2)
 	end
 	return rules
 end
-nether.get_mesecon_emission_rules_from_colorfacedir = get_mesecon_emission_rules_from_colorfacedir -- make the function available to nodes.lua
 
 -- Combining frame_node_name, p1, and p2 will always be enough to uniquely identify a portal_definition
 -- WITHOUT needing to inspect the world. register_portal() will enforce this.
@@ -2026,7 +2025,7 @@ local wormhole_nodedef_default = {
 	mesecons = {receptor = {
 		state = "on",
 		rules = function(node)
-			return nether.get_mesecon_emission_rules_from_colorfacedir(node.param2)
+			return get_mesecon_emission_rules_from_colorfacedir(node.param2)
 		end
 	}}
 }
