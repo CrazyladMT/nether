@@ -337,7 +337,7 @@ end -- end of "if nether.NETHER_REALM_ENABLED..."
 core.register_on_dieplayer(
 	function(player, reason)
 		if reason.node ~= nil and core.get_item_group(reason.node, "lava") > 0 or reason.node == "nether:lava_crust" then
-			minetest.sound_play(
+			core.sound_play(
 				"nether_lava_bubble",
 				-- this sample was encoded at 3x speed to reduce .ogg file size
 				-- at the expense of higher frequencies, so pitch it down ~3x
